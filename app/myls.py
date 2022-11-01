@@ -1,19 +1,17 @@
 import os
 import sys
 
-if len (sys.argv) > 2:
-    print('You have specified too many arguments')
-    sys.exit()
     
 if len (sys.argv) < 2:
-    print('You need to specify the path to be listed')
+    print('show help')
     sys.exit()
     
     
-input_path = sys.argv[1]        
+subcommand = sys.argv[1]        
 
-if not os.path.isdir(input_path):
-    print('The path specified does not exists')
-    sys.exit()
+if subcommand == 'show':
+    print('showshow')
+else:
+    print(f'subcommand {subcommand} not found') 
+
     
-print('\n'.join(os.listdir(input_path)))    
