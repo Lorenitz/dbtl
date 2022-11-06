@@ -1,11 +1,6 @@
 import os
 import sys
-#from show import show
-#sys.path.insert(0, '...\...\...\GitHub Projects\dbtl\dbtl\app\subcommand')
-
-#from dbtl.app.subcommand import show
-#sys.path.insert(0, '/../dbtl/dbtl/app/subcommand/')
-from subcommand import show
+from subcommand.show import show_details
     
 if len (sys.argv) < 2:
     help = """dbtl allows you to transform data in data warehouses
@@ -27,7 +22,7 @@ sub-commands:
 subcommand = sys.argv[1]        
 
 if subcommand == 'show':
-   show.show_details()
+   show_details()
 else:
     print(f'subcommand {subcommand} not found') 
 

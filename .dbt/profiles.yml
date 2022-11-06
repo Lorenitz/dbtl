@@ -1,0 +1,15 @@
+prod:
+  type: redshift
+  host: examplecluster.abc123xyz789.us-west-1.redshift.amazonaws.com
+  user: awsuser
+  password: my_password
+  dbname: bookshop
+  schema: dbtl_bookshop
+test:
+  type: postgres
+  host: localhost
+  user: localuser
+  password: my_password
+  port: 5432
+  dbname: bookshop
+  schema: dbtl_bookshop

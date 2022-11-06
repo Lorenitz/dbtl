@@ -1,16 +1,15 @@
+import yaml
+from yaml.loader import SafeLoader
+
 def show_details():
-    details= """prod warehouse:
-  redshift: examplecluster.abc123xyz789.us-west-1.redshift.amazonaws.com
-  dbname:   bookshop
-
-test warehouse:
-  postgres: localhost
-  dbname:   bookshop
-
-sql files:
-  models/lorem.sql
-  models/ipsum.sql
-  models/dolor.sql
- """
+    with open('.dbt/profiles.yml') as f:
+        data = yaml.load(f, Loader=SafeLoader)
+        print('prod warehouse:')
+        print(f"  {data['prod']['type']}: {data['prod']['host']}")
+        print(f"  dbname: {data['prod']['dbname']}\n")
+        print('test warehouse:')
+        print(f"  {data['test']['type']}: {data['test']['host']}")
+        print(f"  dbname: {data['test']['dbname']}\n")
         
-    print(details)
+        print('sql files:')
+        
