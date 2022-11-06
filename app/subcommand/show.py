@@ -1,5 +1,10 @@
 import yaml
+import os
 from yaml.loader import SafeLoader
+
+dir_path=r'models/'
+# list to store files
+res = []
 
 def show_details():
     with open('.dbt/profiles.yml') as f:
@@ -13,3 +18,11 @@ def show_details():
         
         print('sql files:')
         
+    for path in os.listdir(dir_path):
+        file_name = os.path.join(dir_path, path)
+        
+        # check if current path is a file
+        if os.path.isfile(file_name):
+           # res.append(file_name)
+            print(f"  {file_name}")
+       
