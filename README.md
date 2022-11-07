@@ -8,5 +8,5 @@ A dbt project written in python for learning purposes. The L stands to Lorena.
 In order to use on power shell, define the following function
 
 ```
-function dbtl {python app/myls.py $args}
+function dbtl {python app/main.py $args}
 ```
