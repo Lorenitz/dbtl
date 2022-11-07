@@ -1,5 +1,3 @@
-import os
-
 def show_help():
     help = """dbtl allows you to transform data in data warehouses
     usage:

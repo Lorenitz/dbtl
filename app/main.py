@@ -1,4 +1,3 @@
-import os
 import sys
 from subcommand.show import show_details
 from subcommand.help import show_help
