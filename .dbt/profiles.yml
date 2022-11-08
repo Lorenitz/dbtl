@@ -1,9 +1,9 @@
 prod:
-  type: redshift
-  host: examplecluster.abc123xyz789.us-west-1.redshift.amazonaws.com
-  user: awsuser
-  password: my_password
-  dbname: bookshop
+  type: postgres
+  host: localhost
+  user: postgres
+  password: 123456
+  dbname: postgres
   schema: dbtl_bookshop
 test:
   type: postgres

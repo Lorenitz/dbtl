@@ -20,7 +20,5 @@ function dbtl {python app/main.py $args}
 
 # TODO
 
-- create `run` subcommand
-    - connect to postgres
-    - query `SELECT VERSION()`
-    - show version on terminal
+- read from profiles.yml the postgres connection on run.py
+- execute each model sql file in run.py
