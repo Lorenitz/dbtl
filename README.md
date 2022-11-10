@@ -20,5 +20,4 @@ function dbtl {python app/main.py $args}
 
 # TODO
 
-- read from profiles.yml the postgres connection on run.py - ok
-- execute each model sql file in run.py
+- Create the output for dbtl run (models, 1 of n models)

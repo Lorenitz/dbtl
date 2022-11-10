@@ -23,6 +23,7 @@ def run():
         for path in os.listdir(dir_path):
             file_name = os.path.join(dir_path, path)
             if os.path.isfile(file_name):
+                print("START " + f"  {file_name}")
                 with open(file_name) as f:
                     lines = f.readlines()
 
@@ -33,13 +34,9 @@ def run():
                     
                     #execute a statement
                     cur.execute(statement)
-                    
-                    #db_version = cur.fetchone()
-                    
-                    #print(db_version)
-                    
                 
-                    cur.close() 
+                    cur.close()
+                    print("OK " + f"  {file_name}") 
     except Exception as error:
         print('Error when running:')
         print(error)  
