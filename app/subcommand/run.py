@@ -41,6 +41,7 @@ def run():
             if os.path.isfile(file_name):
                 iter_file+=1    
                 print(f"| {iter_file} of {count} START {file_name}{dots[len(file_name):]}[RUN]" )
+                # TRY:
                 with open(file_name) as f:
                     lines = f.readlines()
 
@@ -53,7 +54,10 @@ def run():
                     cur.execute(statement)
                 
                     cur.close()
-                print(f"| {iter_file} of {count} OK {file_name}...{dots[len(file_name):]}[SUCCESS in 1.00s]" )
+                print(f"| {iter_file} of {count} OK {file_name}...{dots[len(file_name):]}[SUCCESS in 1.00s]")
+                # except Exception as error:
+                #   print(f"| {iter_file} of {count} OK {file_name}...{dots[len(file_name):]}[ERROR in 1.00s]")
+                #   print(error)
         print('| Finished running ' +str(count)+ ' models in 3.00s. \n')  
         print('Completed successfully\n')
         print('DONE. PASS='+str(count)+ ' ERROR=0 TOTAL='+str(count))
