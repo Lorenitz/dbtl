@@ -34,6 +34,7 @@ def run():
         
         
         iter_file=0
+        error_file=0
         dots=".............................."
         # For each model in /models {
         for path in os.listdir(dir_path):
@@ -41,29 +42,48 @@ def run():
             if os.path.isfile(file_name):
                 iter_file+=1    
                 print(f"| {iter_file} of {count} START {file_name}{dots[len(file_name):]}[RUN]" )
-                # TRY:
-                with open(file_name) as f:
-                    lines = f.readlines()
+                try:
+                    with open(file_name) as f:
+                        
+                        lines = f.readlines()
 
-                    statement = ''.join(lines)
+                        statement = ''.join(lines)
+                        
+                        #create a cursor
+                        cur = conn.cursor()
+                        
+                        #execute a statement
+                        cur.execute(statement)
                     
-                    #create a cursor
-                    cur = conn.cursor()
-                    
-                    #execute a statement
-                    cur.execute(statement)
-                
-                    cur.close()
-                print(f"| {iter_file} of {count} OK {file_name}...{dots[len(file_name):]}[SUCCESS in 1.00s]")
-                # except Exception as error:
-                #   print(f"| {iter_file} of {count} OK {file_name}...{dots[len(file_name):]}[ERROR in 1.00s]")
-                #   print(error)
+                        cur.close()
+                    print(f"| {iter_file} of {count} OK {file_name}...{dots[len(file_name):]}[SUCCESS in 1.00s]")
+                except Exception as error:
+                   error_file+=1
+                   print(f"| {iter_file} of {count} ERROR {file_name}...{dots[len(file_name):]}[ERROR in 1.00s]")
+                 
+                   #list_error=[]
+                   #list_error.append(error)
+                   #print("HEEERRREEE")
+                   error_message=error
+                   #print(error)
+        
+             
         print('| Finished running ' +str(count)+ ' models in 3.00s. \n')  
-        print('Completed successfully\n')
-        print('DONE. PASS='+str(count)+ ' ERROR=0 TOTAL='+str(count))
+        pass_without_errors=count-error_file
+        if error_file==0:
+            print('Completed successfully\n')
+            print('DONE. PASS='+str(count)+ ' ERROR=0 TOTAL='+str(count))
+        else:
+           print(f"Completed with {error_file} errors. \n")
+           print(error_message)
+           print('DONE. PASS='+str(pass_without_errors)+ ' ERROR='+str(error_file)+ ' TOTAL='+str(count))
+           
+           
+       
+        
     except Exception as error:
         print('Error when running:')
-        print(error)  
+       
     finally:
         if conn is not None:      
             #close the communication with the PostgreSQL
