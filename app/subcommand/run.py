@@ -75,6 +75,8 @@ def run():
             print('DONE. PASS='+str(count)+ ' ERROR=0 TOTAL='+str(count))
         else:
            print(f"Completed with {error_file} errors. \n")
+           
+           print(f"Error in {file_name}")
            print(error_message)
            print('DONE. PASS='+str(pass_without_errors)+ ' ERROR='+str(error_file)+ ' TOTAL='+str(count))
            
