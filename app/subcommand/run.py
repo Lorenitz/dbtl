@@ -60,14 +60,8 @@ def run():
                 except Exception as error:
                    error_file+=1
                    print(f"| {iter_file} of {count} ERROR {file_name}...{dots[len(file_name):]}[ERROR in 1.00s]")
-                 
-                   #list_error=[]
-                   #list_error.append(error)
-                   #print("HEEERRREEE")
                    error_message=error
-                   #print(error)
-        
-             
+
         print('| Finished running ' +str(count)+ ' models in 3.00s. \n')  
         pass_without_errors=count-error_file
         if error_file==0:
@@ -80,8 +74,6 @@ def run():
            print(error_message)
            print('DONE. PASS='+str(pass_without_errors)+ ' ERROR='+str(error_file)+ ' TOTAL='+str(count))
            
-           
-       
         
     except Exception as error:
         print('Error when running:')
