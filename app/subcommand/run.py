@@ -35,8 +35,9 @@ def run():
         
         iter_file=0
         error_file=0
+        error_messages=[]
         dots=".............................."
-        # For each model in /models {
+        # For each model in /models 
         for path in os.listdir(dir_path):
             file_name = os.path.join(dir_path, path)
             if os.path.isfile(file_name):
@@ -58,22 +59,24 @@ def run():
                         cur.close()
                     print(f"| {iter_file} of {count} OK {file_name}...{dots[len(file_name):]}[SUCCESS in 1.00s]")
                 except Exception as error:
-                   error_file+=1
                    print(f"| {iter_file} of {count} ERROR {file_name}...{dots[len(file_name):]}[ERROR in 1.00s]")
-                   error_message=error
-
+                   error_messages.append(error)
+                   
         print('| Finished running ' +str(count)+ ' models in 3.00s. \n')  
-        pass_without_errors=count-error_file
-        if error_file==0:
+        
+        pass_without_errors=count-len(error_messages)
+        
+        if len(error_messages)==0:
             print('Completed successfully\n')
             print('DONE. PASS='+str(count)+ ' ERROR=0 TOTAL='+str(count))
         else:
            print(f"Completed with {error_file} errors. \n")
            
-           print(f"Error in {file_name}")
-           print(error_message)
-           print('DONE. PASS='+str(pass_without_errors)+ ' ERROR='+str(error_file)+ ' TOTAL='+str(count))
-           
+           #For each error found in models:
+           for error_message in error_messages:
+                print(f"Error in {file_name}")
+                print(error_message)
+           print(f"DONE. PASS={pass_without_errors} ERROR={len(error_messages)} TOTAL={count}")          
         
     except Exception as error:
         print('Error when running:')

@@ -1,4 +1,4 @@
 create or replace view dim_hello as
     select * from hello	
-    union alll
+    union all
     select * from hello2; 
